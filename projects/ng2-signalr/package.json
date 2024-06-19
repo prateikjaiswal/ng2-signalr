@@ -1,5 +1,5 @@
 {
-  "name": "ng2-signalr",
+  "name": "app-signalr",
   "version": "12.0.0",
   "peerDependencies": {
     "@angular/common": ">=11.0.0",
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/HNeukermans/ng2-signalR.git"
   },
   "bugs": {
-    "url": "https://github.com/HNeukermans/ng2-signalr/issues"
+    "url": "https://github.com/HNeukermans/app-signalr/issues"
   },
   "homepage": "https://github.com/HNeukermans/ng2-signalR",
   "keywords": [

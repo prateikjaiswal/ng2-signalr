@@ -18,11 +18,11 @@
       "dom"
     ],
     "paths": {
-      "ng2-signalr": [
-        "dist/ng2-signalr"
+      "app-signalr": [
+        "dist/app-signalr"
       ],
-      "ng2-signalr/*": [
-        "dist/ng2-signalr/*"
+      "app-signalr/*": [
+        "dist/app-signalr/*"
       ]
     },
     "useDefineForClassFields": false

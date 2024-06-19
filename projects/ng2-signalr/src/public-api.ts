@@ -1,5 +1,5 @@
 /*
- * Public API Surface of ng2-signalr
+ * Public API Surface of app-signalr
  */
 
 export { ISignalRConnection } from './lib/services/connection/i.signalr.connection';

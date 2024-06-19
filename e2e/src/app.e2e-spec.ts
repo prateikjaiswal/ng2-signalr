@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to ng2-signalr!');
+    expect(page.getTitleText()).toEqual('Welcome to app-signalr!');
   });
 
   afterEach(async () => {

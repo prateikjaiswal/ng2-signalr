@@ -1,9 +1,9 @@
 
-[![npm version](https://badge.fury.io/js/ng2-signalr.svg)](https://badge.fury.io/js/ng2-signalr)
+[![npm version](https://badge.fury.io/js/app-signalr.svg)](https://badge.fury.io/js/app-signalr)
 ![live demo](https://img.shields.io/badge/demo-live-orange.svg)
-[![Coverage Status](https://coveralls.io/repos/github/HNeukermans/ng2-signalr/badge.svg?branch=master)](https://coveralls.io/github/HNeukermans/ng2-signalr?branch=master)
-[![Build Status](https://travis-ci.org/HNeukermans/ng2-signalr.svg?branch=master)](https://travis-ci.org/HNeukermans/ng2-signalr)
-# ng2-signalr
+[![Coverage Status](https://coveralls.io/repos/github/HNeukermans/app-signalr/badge.svg?branch=master)](https://coveralls.io/github/HNeukermans/app-signalr?branch=master)
+[![Build Status](https://travis-ci.org/HNeukermans/app-signalr.svg?branch=master)](https://travis-ci.org/HNeukermans/app-signalr)
+# app-signalr
 An angular typescript library that allows you to connect to Asp.Net SignalR
 
 ## Features:
@@ -11,14 +11,14 @@ An angular typescript library that allows you to connect to Asp.Net SignalR
  2. use rxjs to observe server events 
  3. write unit tests easy using the provided SignalrConnectionMockManager & ActivatedRouteMock
 
-## [ng2-signalr live demo](http://ng2-signalr-webui.azurewebsites.net)
-![ng2-signalr](https://cloud.githubusercontent.com/assets/2285199/22845870/f8cdaff4-efe4-11e6-905d-a471a998125a.gif)
-source: [ng2 signalr demo](https://github.com/HNeukermans/ng2-signalr.demo.webui.systemjs) <br>
-demo : [demo](http://ng2-signalr-webui.azurewebsites.net) (can take longer to load. Sorry, azure free tier :-))<br>
-ng cli example: [ng cli example](https://github.com/HNeukermans/ng2-signalr.demo.webui.ngcli) <br>
+## [app-signalr live demo](http://app-signalr-webui.azurewebsites.net)
+![app-signalr](https://cloud.githubusercontent.com/assets/2285199/22845870/f8cdaff4-efe4-11e6-905d-a471a998125a.gif)
+source: [ng2 signalr demo](https://github.com/HNeukermans/app-signalr.demo.webui.systemjs) <br>
+demo : [demo](http://app-signalr-webui.azurewebsites.net) (can take longer to load. Sorry, azure free tier :-))<br>
+ng cli example: [ng cli example](https://github.com/HNeukermans/app-signalr.demo.webui.ngcli) <br>
 ## Installation
 ```
-npm install ng2-signalr jquery signalr --save
+npm install app-signalr jquery signalr --save
 ```
 
 > v5 is first version developed against angular v5. 
@@ -27,15 +27,15 @@ npm install ng2-signalr jquery signalr --save
 ## Setup
 inside app.module.ts
 ```ts
-import { SignalRModule } from 'ng2-signalr';
-import { SignalRConfiguration } from 'ng2-signalr';
+import { SignalRModule } from 'app-signalr';
+import { SignalRConfiguration } from 'app-signalr';
 
 // >= v2.0.0
 export function createConfig(): SignalRConfiguration {
   const c = new SignalRConfiguration();
   c.hubName = 'Ng2SignalRHub';
   c.qs = { user: 'donald' };
-  c.url = 'http://ng2-signalr-backend.azurewebsites.net/';
+  c.url = 'http://app-signalr-backend.azurewebsites.net/';
   c.logging = true;
   
   // >= v5.0.0
@@ -56,7 +56,7 @@ export function createConfig(): SignalRConfiguration {
 const config = new SignalRConfiguration();
 config.hubName = 'Ng2SignalRHub';
 config.qs = { user: 'donald' };
-config.url = 'http://ng2-signalr-backend.azurewebsites.net/';
+config.url = 'http://app-signalr-backend.azurewebsites.net/';
 
 @NgModule({
   imports: [ 
@@ -82,7 +82,7 @@ Setup involves 3 steps.
 ```ts
 // 1. if you want your component code to be testable, it is best to use a route resolver and make the connection there
 import { Resolve } from '@angular/router';
-import { SignalR, SignalRConnection } from 'ng2-signalr';
+import { SignalR, SignalRConnection } from 'app-signalr';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -164,14 +164,14 @@ You can configure Singalr on 2 different levels:
 #### 1. Module level: 
 The module level, is where you typically provide the default configuration. This is were you pass in the default hubname, serverurl, qs (query string parameters), and transport. When, somewhere in your application, Singalr.connect() method is invoked without parameters, it will use this default configuration. 
 ```ts
-import { SignalRModule } from 'ng2-signalr';
-import { SignalRConfiguration, ConnectionTransport } from 'ng2-signalr';
+import { SignalRModule } from 'app-signalr';
+import { SignalRConfiguration, ConnectionTransport } from 'app-signalr';
 
 // <= v1.0.9
 const config = new SignalRConfiguration();
 config.hubName = 'Ng2SignalRHub';  //default
 config.qs = { user: 'donald' };
-config.url = 'http://ng2-signalr-backend.azurewebsites.net/';
+config.url = 'http://app-signalr-backend.azurewebsites.net/';
 // Specify one Transport: config.transport = ConnectionTransports.longPolling; or fallback options with order like below. Defaults to best avaliable connection.
 config.transport = [ConnectionTransports.webSockets, ConnectionTransports.longPolling];
 
@@ -187,8 +187,8 @@ Signalr.connect(); //HERE: module level configuration is used when trying to con
 #### 2. Connection level: 
 You can always configure signalr on a per connection level. For this, you need to invoke Singalr.connect(options) method, passing in an options parameter, of type ConnectionOptions. Behind the scenes, Signalr connect method will merge the provided options parameter, with the default (module) configuration, into a new configuration object, and pass that to signalr backend. 
 ```ts
-import { SignalRModule } from 'ng2-signalr';
-import { IConnectionOptions, SignalR } from 'ng2-signalr';
+import { SignalRModule } from 'app-signalr';
+import { IConnectionOptions, SignalR } from 'app-signalr';
 
 let options: IConnectionOptions = { hubName: 'MyHub' };
 Signalr.connect(options);
@@ -317,7 +317,7 @@ import '../node_modules/signalr/jquery.signalR.js';
 ### Detailed systemjs install (starting from v2.0.0)
 ```
  {
-   'ng2-signalr' : 'node_modules/ng2-signalr/bundles/ng2-singalr.umd.(?min).js'
+   'app-signalr' : 'node_modules/app-signalr/bundles/ng2-singalr.umd.(?min).js'
  }
 ```
 
@@ -337,7 +337,7 @@ Use `npm build` to compile and build. A `/dist` folder is generated.
 
 ## Publish
 
-Navigate to `dist/ng2-signalr` and run `npm publish`.
+Navigate to `dist/app-signalr` and run `npm publish`.
 
 ##TODO: Code coverage
 
